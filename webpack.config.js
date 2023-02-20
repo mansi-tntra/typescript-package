@@ -8,8 +8,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
+    libraryTarget: "umd",
+    library: "typescript-react-package"
   },
-  devtool: 'source-map',
+//   devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
