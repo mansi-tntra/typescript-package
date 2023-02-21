@@ -1,17 +1,15 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
+const React = require('react')
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index.js',
-    libraryTarget: "umd",
-    library: "typescript-react-package"
   },
-//   devtool: 'source-map',
+  devtool: 'source-map',
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
@@ -24,18 +22,18 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader' , 'ts-loader'],
+        use: ['babel-loader', 'ts-loader'],
       },
     ],
   },
-  externals: {
-    react: 'react',
-  },
+
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: './index.html',
     }),
-    new BundleAnalyzerPlugin(),
   ],
+  externals: {
+    react: React,
+  },
 }
